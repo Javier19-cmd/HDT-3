@@ -6,6 +6,7 @@ Clase Generador
  */
 import java.util.Arrays;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -13,27 +14,29 @@ import source.Ordena;
 
  public class Generador implements InterfazKS{
       
-      public static void abrir(){
+    public static void abrir(){
        try{//Buscando el archivo de Excel.
             
             //Verificando si está el archivo.
             File archv = new File("est.xlsx");
+            FileWriter sal = new FileWriter(archv);
             Scanner enc = new Scanner(archv);
 
             int numero; //Número encargado de almacenar los números entre 10 y 3000.
             for(int i = 10; i <= 3000; i++){
                 //For para generar los números.
                 numero = (int)(Math.random() * 3000 + 1); //Almacenando los números. 
-                enc.write(numero);
+                sal.write(numero);
             }
 
-            Sytem.out.println(enc);
+            System.out.println(archv);
 
         }catch(Exception archivoNoExistente){//El archivo no está.
             System.out.println("El archivo no se encuentra en las carpetas.....");
         }
       }
 
+      /*
       public static void escribir(){
           
           int numero; //Número encargado de almacenar los números entre 10 y 3000.
@@ -42,24 +45,24 @@ import source.Ordena;
               numero = (int)(Math.random() * 3000 + 1); //Almacenando los números. 
           }
           
-          enc.write(numero); //Escribiendo los números en el archivo.
+          //enc.write(numero); //Escribiendo los números en el archivo.
             
 
       }
-
+*/
       public static void gnome(int arr[], int n){
           
           int index = 0; //Variable para el index del Array. 
           
-          int gnome = "est.xlsx"; 
+          String gnome = "est.xlsx"; 
           File file = new File(gnome);
           
-          Scanner analisis = new Scanner(file);
+            Scanner analisis = new Scanner(file);
 
-          while(index < gnome){
+          while(index < gnome.length()){
              if(index == 0){
                  index++; //El index aumenta. 
-                 if(arr[gnome] >= arr[gnome - 1]){
+                 if(arr[gnome.length()] >= arr[gnome.length() - 1]){
                     //Si el número es mayor al anterior, entonces el número que estaba mal se regresa a su posición debida. 
                     index++; 
                  }else{
@@ -94,23 +97,36 @@ import source.Ordena;
 
         }
 
-      mergeSort(l, mid); //Aplicando el mergeSort a la submatriz con el índice mid.
-      mergeSort(r, n - mid); //Aplicando el mergeSort a la submatriz con el índice n - mid.
+      //mergeSort(l, mid); //Aplicando el mergeSort a la submatriz con el índice mid.
+      //mergeSort(r, n - mid); //Aplicando el mergeSort a la submatriz con el índice n - mid.
 
       //merge(a, l, r, mid, n - mid); //Aplicando el merge a las matrices a, l y r. También se le aplicó a las las variables mid y n - mid.
 
       }
 
-      public static void quick(int[] a, int izquierda, int derecha){
+      public static void quick(String a[], int izquierda, int derecha){
         int num; //Pivote
-        if (derecha > izquierda){//Se establece un pivote y se ordena los numenores menores del lado izquierdo y los mayores del derecho.
-          num = particion(a, izquierda, derecha);
-          rapirec(a, izquierda, derecha);
-          rapirec(a, num + 1, derecha);
-        }
         
-        rapirec(a, 0, a.length - 1);
+        String archivo = "est.xlsx";
+        File file = new File(archivo);
+
+        for(int i; i < archivo.length(); i++){
+            //Recorriendo el archivo
+            if (archivo.length() < archivo.length()-1){//Se establece un pivote y se ordena los numenores menores del lado izquierdo y los mayores del derecho.
+                
+                //Si en caso el de la izquierda es menor que el de la derecha, entonces en el array se almacena primero el menor y luego el mayor.
+
+                a[archivo.charAt(i)] = a[archivo.charAt(i) - 1]; //Almacenando los números de los índices. 
+
+            }else{
+
+                //Si en caso el de la derecha es mayor al de la derecha, entonces en el array se almacena primero el menor y luego el mayor.
+                
+                a[archivo.charAt(i) - 1] = a[archivo.charAt(i)]; //Almacenando los números de los índices.
+            }
+        
       }
+    }
       public static void radix(int[] a, int index, int pla){
         //Se saca el numero mas grande para compararlo con el resto.
         int out = new int[index + 1];
