@@ -79,23 +79,29 @@ import source.Ordena;
 
       public static void merge(int[] a, int n){
           
-          if(n < 2){ //Analizando si n es menor a dos, si en caso sí lo es, entonces no se regresa nada...
-             return; 
-          }
+            String archivo = "est.xlsx";
+            File file = new File(archivo); 
 
-        int mid = n/2; //Declarando la variable mid, que es la mitad de la variable n.
-
-        int[] l = new int[mid];     //Declarando esta nueva sub matriz con la variable mid.
-        int[] r = new int[n - mid]; //Declarando esta sub matriz con la diferencia de n - mid. 
-
-        for(int i = 0; i < mid; i++){//For para igualar la matriz l[] con la matriz a[].
-            l[i] = a[i]; //Se hace la igualación de la matriz "l" con la matriz "a".
-        }
-
-        for(int i = mid; i < n; i++){//For para igualar la submatriz r[] y a[].
-            r[i - mid] = a[i]; //Igualando la matriz r[i - mid] y a[i].
-
-        }
+            for(int i = 0; i < archivo.length(); i++){
+                
+                //Recorriendo el archivo.
+                if((archivo.length() < 2)){
+                    return;
+                }
+                
+                int mid = (archivo.length())/2; //Declarando la variable mid, que es la mitad de la variable n.
+                int[] l = new int[mid];     //Declarando esta nueva sub matriz con la variable mid.
+                int[] r = new int[n - mid]; //Declarando esta sub matriz con la diferencia de n - mid.
+                
+                for(int b = 0; i < mid; b++){//For para igualar la matriz l[] con la matriz a[].
+                    l[b] = a[b]; //Se hace la igualación de la matriz "l" con la matriz "a".
+                }
+        
+                for(int c = mid; i < n; c++){//For para igualar la submatriz r[] y a[].
+                    r[c - mid] = a[c]; //Igualando la matriz r[i - mid] y a[i].
+        
+                }
+            }
 
       //mergeSort(l, mid); //Aplicando el mergeSort a la submatriz con el índice mid.
       //mergeSort(r, n - mid); //Aplicando el mergeSort a la submatriz con el índice n - mid.
